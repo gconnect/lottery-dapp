@@ -1,7 +1,5 @@
 'reach 0.1';
 
-import { Alice } from "./build/index.main.mjs";
-
 const Shared = {
   getNum : Fun([UInt], UInt),
   seeOutcome: Fun([UInt], Null)
@@ -9,7 +7,7 @@ const Shared = {
 const amt = 1;
 
 export const main = Reach.App(() => {
-  // setOptions({ untrustworthyMaps: true });
+  setOptions({ untrustworthyMaps: true });
     const A = Participant('Alice', {
     // Specify Alice's interact interface here
     ...hasRandom,
@@ -30,7 +28,7 @@ export const main = Reach.App(() => {
     seeWinner: Fun([UInt], Null)
   });
 
-  const C = API('Bobs', {
+  const C = API('Player', {
     // Specify Bob's interact interface here
     ...Shared,
     showNum: Fun([UInt], Null),
@@ -81,42 +79,38 @@ export const main = Reach.App(() => {
     // LEVEL 2 and 3
   const bobArray = new Set();
 
-  const [ winner, isWinningNumber, winningNumber, result, howmany] =
-  parallelReduce([ A, true, winningNum, 0 , 0])
+  const [ winner, isWinningNumber, winningNumber, howmany] =
+  parallelReduce([ A, true, winningNum, 0])
   .invariant(balance() == 0 && balance(nftId) == 0)
-  .invariant(bobArray.Map.size() == howmany)
+  //.invariant(bobArray.Map.size() == howmany)
   .while(false && !isWinningNumber)
   .api_(C.getNum, (num) => {
     check(!bobArray.member(this));
-    var output = 0
-    if(num == winningNumber){
-      output = 1
-    }else{
-      output =  0
-    };
     return [0, (k) => {
       bobArray.insert(this);
       check(num == winningNumber)
         k(num); 
-      transfer(amt, nftId).to(result == 0 ? A : this)
-      return [ this, isWinningNumber, winningNumber, result, howmany + 1];
+      if(num == winningNumber){
+      transfer(amt, nftId).to(this)
+      }else{
+      transfer(amt, nftId).to(A)
+      };
+      return [ this, isWinningNumber, winningNumber, howmany + 1];
     }]; 
   })
   .api(C.showNum, (nx, k) => {
     k(null)
-     return [ this, isWinningNumber, winningNumber, result, howmany];
+     return [ this, isWinningNumber, winningNumber, howmany];
    })
   .api(C.seeWinner, (nx, k) => {
     k(null)
-     return [this, isWinningNumber, winningNumber, result, howmany ];
+     return [this, isWinningNumber, winningNumber, howmany ];
    })
   .api(C.seeOutcome, (nx, k) => {
    k(null)
-    return [ this, isWinningNumber, winningNumber, result, howmany ];
+    return [ this, isWinningNumber, winningNumber, howmany ];
   })
   
-  // transfer(amt, nftId).to(A)
-
   commit();
   exit();
 });

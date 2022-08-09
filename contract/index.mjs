@@ -32,8 +32,8 @@ const Shared = {
   seeOutcome: (num) =>{
     console.log(`The outcome is ${OUTCOME[num]}`)
   }
-
 }
+
 
 console.log('Starting backends...');
 await Promise.all([
@@ -60,26 +60,39 @@ await Promise.all([
       console.log(`The winning number is ${num}`)
     }
   }),
+
 ]);
 
-//Second & Third level implementation
-const users = await stdlib.newTestAccounts(2, startingBalance);
+  //Second & Third level implementation
 
-const ctcWho = (whoi) =>  users[whoi].contract(backend, ctcAlice.getInfo());
+let done = false;
+const players = [];
+const startPlayers = async () => {
+    const runPlayers = async (who) => {
+        const acc = await stdlib.newTestAccount(startingBalance);
+        acc.setDebugLabel(who);
+        await acc.tokenAccept(nft.id);
+        players.push([who, acc]);
+        const ctc = acc.contract(backend, ctcAlice.getInfo());
+        const getBal = async () => stdlib.formatCurrency(await stdlib.balanceOf(acc));
+        console.log(`${who} balance before is ${await getBal()}`);
+        try {
+            const num = await ctc.apis.Player.getNum(5);
+            console.log(`${who} out picked ${num}.`);
+           return num 
+        } catch (e) {
+            console.log(`${who} failed to play`);
+        }
+        console.log(`${who} balance after is ${await getBal()}`);
+    };
 
-const bob = async (whoi) => {
-  const who = users[whoi];
-  const ctc = ctcWho(whoi);
-  console.log('Address of', stdlib.formatAddress(who));
-  // console.log(`Before account balance of ${who} is ${await getAccountBalance(ctc)}`)
-  await who.tokenAccept(rafflePararms.nftId) 
+    await runPlayers('john');
+    await runPlayers('james');
+    await runPlayers('Claire');
+    while ( ! done ) {
+        await stdlib.wait(1);
+    }
+};
 
-  const msg = await ctc.apis.Bobs.getNum();  
-  console.log(msg)
-    // console.log(`After account balance of ${who} is ${await getAccountBalance(ctc)}`)
-  }
-
-await bob(0)
-await bob(1)
-
+await startPlayers()
 console.log('Goodbye, Alice and Bob!');

@@ -42,7 +42,7 @@ await Promise.all([
     // implement Alice's interact object here
     ...Shared,
     startRaffle: () =>{
-      console.log(`The raffle information is been sent to the contract`)
+      console.log(`The raffle information is been sent to the contract. The NftId is ${rafflePararms.nftId} and the number of ticket is ${rafflePararms.numTickets}`)
       return rafflePararms
     },
     seeHash: (value) =>{
@@ -61,5 +61,25 @@ await Promise.all([
     }
   }),
 ]);
+
+//Second & Third level implementation
+const users = await stdlib.newTestAccounts(2, startingBalance);
+
+const ctcWho = (whoi) =>  users[whoi].contract(backend, ctcAlice.getInfo());
+
+const bob = async (whoi) => {
+  const who = users[whoi];
+  const ctc = ctcWho(whoi);
+  console.log('Address of', stdlib.formatAddress(who));
+  // console.log(`Before account balance of ${who} is ${await getAccountBalance(ctc)}`)
+  await who.tokenAccept(rafflePararms.nftId) 
+
+  const msg = await ctc.apis.Bobs.getNum();  
+  console.log(msg)
+    // console.log(`After account balance of ${who} is ${await getAccountBalance(ctc)}`)
+  }
+
+await bob(0)
+await bob(1)
 
 console.log('Goodbye, Alice and Bob!');

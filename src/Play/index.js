@@ -8,6 +8,8 @@ export default function PlayModal(props) {
   const [contractInfo, setContractInfo] = useState("")
   const [selectedNum, setSelectedNum] = useState(0)
 
+
+
   const OUTCOME = ["Your number is not a match", "Your number matches"]
 
   const Shared = {
@@ -46,7 +48,9 @@ export default function PlayModal(props) {
       const acc = await stdlib.getDefaultAccount();
       const ctcInfo = JSON.parse(contractInfo)
       const ctc = acc.contract(backend, ctcInfo);
-      // backend.Bob(ctc, this);
+      const tokenID = 104446316 
+      await acc.tokenAccept(tokenID) 
+
       await ctc.p.Bob({
       ...stdlib.hasRandom,
       // implement Bob's interact object here

@@ -11,3 +11,9 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+#dropdown-basic-button {
+  background: #A32896;
+  border: A32896;
+  border-color: #A32896;
+}

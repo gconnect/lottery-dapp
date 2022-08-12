@@ -23,6 +23,7 @@ export default function DeployerModal(props) {
     const acc = await stdlib.getDefaultAccount();
     const ctc = acc.contract(backend);
 
+    // contract info {"type":"BigNumber","hex":"0x0639a704"}
     const nft = await stdlib.launchToken(acc, "Raffle Prize", "RPZ", {supply: 1})
 
     const rafflePararms = {
@@ -41,14 +42,11 @@ export default function DeployerModal(props) {
         console.log(`Winning number hash is ${value}`)
       }
       })
+    const ctcInfoStr = JSON.stringify(await ctc.getInfo(), null, 2);
+    console.log(ctcInfoStr)
     }catch(e){
       console.log(e)
     }
-
-    ctc.getInfo().then((info) => {
-      // setContractInfo(JSON.stringify(info))
-      // setInfo(true)
-      console.log(`The contract is deployed as = ${JSON.stringify(info)}`); });
   }
   return (
     <Modal

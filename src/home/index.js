@@ -1,11 +1,13 @@
-import React, {useState, useEffect} from "react"
+import React, { useState, useEffect } from "react"
 import { StyleSheet, css } from "aphrodite"
-import { Button, Container } from "react-bootstrap"
+import { Button, Container, DropdownButton, Dropdown } from "react-bootstrap"
 import logo from "../images/AlgoBet.svg"
 import winner from "../images/winners.svg"
 import PlayModal from "../Play"
 import DeployerModal from "../Deployer"
+import { logout } from "../unstoppable_auth"
 import { loadStdlib, ALGO_MyAlgoConnect as MyAlgoConnect } from '@reach-sh/stdlib'
+import ConnectWalletModal from "../WalletConnectModal/ConnectWallet"
 const stdlib = loadStdlib("ALGO")
 stdlib.setWalletFallback(stdlib.walletFallback({
   providerEnv: 'TestNet', MyAlgoConnect }));
@@ -66,40 +68,52 @@ const style = StyleSheet.create({
   subHead: {
     textAlign: "center",
     margin:"24px"
-  }
+  },
+  
 })
 
 export default function Home(){
   const [modalShow, setModalShow] = useState(false);
   const [show, setShow] = useState(false);
+  const [showConnectModal, setShowConnectModal] = useState(false)
   const [walletAddress, setWalletAddress] = useState(null)
-  const isConnected = !!walletAddress
-
-  const connectWallet = async () =>{
-    const acc = await stdlib.getDefaultAccount();
-    console.log(acc.networkAccount.addr)
-    setWalletAddress(acc.networkAccount.addr)
-    localStorage.setItem("address", acc.networkAccount.addr)
-  }
+  const [domain, setDomain] = useState(null)
+  const isConnected = !!walletAddress || !!domain
+  const [unstoppable, setUnstoppable] = useState(false)
 
   const disconnectWallet = () =>{
     localStorage.clear("address")
     setWalletAddress(null)
+    window.location.reload()
   }
-
 
   useEffect(() =>{
     const value = localStorage.getItem("address")
-    if(value){
-      setWalletAddress(value)
-    }
+    const domain = localStorage.getItem("domain")
+
+      if(value !== ""){
+        setWalletAddress(value)
+      }
+      if (domain){
+        setDomain(domain)
+        setUnstoppable(true)
+      }
+
   }, [])
+
 
   return(
     <Container>
       <div className={css(style.header)}>
         <img src={logo} width="100px" alt="logo" />
-        <Button className={css(style.btn)} onClick={isConnected ? disconnectWallet : connectWallet}>{isConnected ? "Disconnect" : "Connect Wallet"}</Button>
+        <div>
+          {isConnected ? 
+           <DropdownButton style={{background: 'red !important'}} id="dropdown-basic-button" title={ unstoppable ? domain : `${walletAddress.substring(0,10)}...`}>
+           <Dropdown.Item onClick={unstoppable ? logout : disconnectWallet}>Disconnect</Dropdown.Item>
+          </DropdownButton> :
+          <Button  className={css(style.btn)} onClick={() => setShowConnectModal(true)}>Connect Wallet </Button>
+          }  
+        </div>
       </div>
       <div className={css(style.initialSection)}>
         <div>
@@ -124,6 +138,7 @@ export default function Home(){
       </div>
       <DeployerModal show={modalShow} onHide={() => setModalShow(false)}/>
       <PlayModal show={show} onHide={() => setShow(false)} />
+      <ConnectWalletModal show={showConnectModal} onHide={() => setShowConnectModal(false)}/>
     </Container>
   )
 }

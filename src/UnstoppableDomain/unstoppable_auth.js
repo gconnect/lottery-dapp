@@ -25,3 +25,13 @@ export async function logout() {
   window.location.reload()
   console.log('Logged out with Unstoppable')
 }
+
+const {default: Resolution} = require('@unstoppabledomains/resolution');
+const resolution = new Resolution();
+resolution
+  .addr('ryan.crypto', 'ETH')
+  .then((receiverETHAddress) => {
+    // receiverETHAddress consists receiver ethereum address
+    // use this address as recipient of the payment
+  })
+  .catch(console.error);

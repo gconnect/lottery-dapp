@@ -3,7 +3,7 @@ import { StyleSheet, css } from "aphrodite"
 import { Modal, Button } from "react-bootstrap"
 import unstoppableButton from "../images/default-large.png"
 import myAlgo from "../images/myalgo.png"
-import {login, logout} from '../unstoppable_auth'
+import {login, logout} from '../UnstoppableDomain/unstoppable_auth'
 import { loadStdlib, ALGO_MyAlgoConnect as MyAlgoConnect } from '@reach-sh/stdlib'
 const stdlib = loadStdlib("ALGO")
 stdlib.setWalletFallback(stdlib.walletFallback({providerEnv: 'TestNet', MyAlgoConnect }));

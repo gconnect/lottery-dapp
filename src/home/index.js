@@ -5,9 +5,12 @@ import logo from "../images/AlgoBet.svg"
 import winner from "../images/winners.svg"
 import PlayModal from "../Play"
 import DeployerModal from "../Deployer"
-import { logout } from "../unstoppable_auth"
+import { logout } from "../UnstoppableDomain/unstoppable_auth"
+import { domainResolutionWithLibrary, resolveDomainUsingAPI } from "../UnstoppableDomain/domain_resolution"
+import { transfer, sendEther, payWithMetamask } from "../UnstoppableDomain/crypto_payment"
 import { loadStdlib, ALGO_MyAlgoConnect as MyAlgoConnect } from '@reach-sh/stdlib'
 import ConnectWalletModal from "../WalletConnectModal/ConnectWallet"
+import BuyTicketModal from "../Buy"
 const stdlib = loadStdlib("ALGO")
 stdlib.setWalletFallback(stdlib.walletFallback({
   providerEnv: 'TestNet', MyAlgoConnect }));
@@ -21,6 +24,12 @@ const style = StyleSheet.create({
   btn:{
     background: "#A32896",
     border: "#A32896",
+  },
+  btn2:{
+    background: "white",
+    border: "2px solid #A32896",
+    color: "#A32896",
+    fontStyle: "bold"
   },
   initialSection: {
     display: "flex",
@@ -51,7 +60,8 @@ const style = StyleSheet.create({
    marginTop: "24px"
   },
   buttonStyle: {
-    marginRight: "24px"
+    marginRight: "24px",
+    marginLeft: "24px"
   },
   winnerImage: {
     '@media (max-width: 575px)': {
@@ -80,6 +90,7 @@ export default function Home(){
   const [domain, setDomain] = useState(null)
   const isConnected = !!walletAddress || !!domain
   const [unstoppable, setUnstoppable] = useState(false)
+  const [buyTicket, setBuyTicket] = useState(false)
 
   const disconnectWallet = () =>{
     localStorage.clear("address")
@@ -87,6 +98,10 @@ export default function Home(){
     window.location.reload()
   }
 
+  const openBuyModal = () =>{
+    setBuyTicket(true)
+    localStorage.clear("txId")
+  }
   useEffect(() =>{
     const value = localStorage.getItem("address")
     const domain = localStorage.getItem("domain")
@@ -121,7 +136,8 @@ export default function Home(){
           <h5 className={css(style.description)} >Built with Reach deployed on Algorand</h5>
           <h5 className={css(style.unique)}>One unique <span className={css(style.jackpot)}>NFT JACKPOT TO BE WON</span></h5>
           <div className={css(style.buttonContainer)}>
-            <Button className={`${css(style.btn)} ${css(style.buttonStyle)}`} onClick={() => setModalShow(true)}>Deployer</Button>
+            <Button className={css(style.btn2)} variant="primary"  onClick={openBuyModal}>Buy Ticket</Button>
+            <Button className={`${css(style.buttonStyle)}`} variant="success" onClick={() => setModalShow(true)}>Deployer</Button>
             <Button className={css(style.btn)} onClick={() => setShow(true)}>Play Now</Button>
           </div>
         </div>
@@ -139,6 +155,7 @@ export default function Home(){
       <DeployerModal show={modalShow} onHide={() => setModalShow(false)}/>
       <PlayModal show={show} onHide={() => setShow(false)} />
       <ConnectWalletModal show={showConnectModal} onHide={() => setShowConnectModal(false)}/>
+      <BuyTicketModal show={buyTicket} onHide={() => setBuyTicket(false)}/>
     </Container>
   )
 }

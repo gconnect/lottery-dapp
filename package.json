@@ -8,18 +8,19 @@
     "@testing-library/react": "^13.3.0",
     "@testing-library/user-event": "^13.5.0",
     "@uauth/js": "^2.2.0",
-    "@uauth/web3modal": "^2.2.0",
-    "@walletconnect/web3-provider": "^1.8.0",
+    "@unstoppabledomains/resolution": "^7.1.4",
     "aphrodite": "^2.4.0",
+    "axios": "^0.27.2",
     "bootstrap": "^5.2.0",
+    "ethers": "^5.6.9",
     "http": "^0.0.1-security",
+    "path": "^0.12.7",
     "react": "^18.2.0",
     "react-bootstrap": "^2.5.0",
     "react-dom": "^18.2.0",
     "react-scripts": "5.0.1",
     "web-vitals": "^2.1.4",
-    "web3": "^1.7.5",
-    "web3modal": "^1.9.8"
+    "web3": "^1.7.5"
   },
   "scripts": {
     "start": "react-app-rewired start",
@@ -44,6 +45,9 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "browser": {
+    "fs": false
   },
   "devDependencies": {
     "assert": "^2.0.0",

@@ -41,7 +41,7 @@ Integration with domain resolution and crypto payment with unstoppable can be fo
 - Login with unstoppable https://docs.unstoppabledomains.com/login-with-unstoppable/
 
 # LICENSE
-Distributed under the MIT License. See for more information LICENSE
+Distributed under the MIT License. See for more information [LICENSE](https://github.com/gconnect/lottery-dapp/blob/master/LICENSE)
 
 # Disclaimer
 This project is not audited and should not be used in a production environment.

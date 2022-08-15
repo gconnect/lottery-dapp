@@ -1,70 +1,47 @@
-# Getting Started with Create React App
+# Lottery Dapp
+This is lottery application built with Reach. Deployed on Algorand and Etherum.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Run Frontend Code
+- To test the code
+- Fork the repository
+- Do `npm install` this will install all required dependencies. (If you encounter any issue after doing this you can delete the node module folder and do npm install again)
+- run `npm start` to start the local server at localhost:3000
 
-## Available Scripts
+# Test Smart Contract Code
+- Install [make](https://en.wikipedia.org/wiki/Make_(software)), [Docker](https://www.docker.com/get-started/) and [Docker Compose](https://docs.docker.com/compose/install/)
+- [Vs Code](https://code.visualstudio.com/) or any IDE of your choice
+- [Node Package Manager](https://nodejs.org/download/)
+- [Create React App](https://github.com/facebook/create-react-app) . This creates a react boilerplate app.
+- [Aphrodite](https://github.com/Khan/aphrodite) for css styling
+- Install Reach and Reach Standard Library
+- More detailed Reach specific setup instruction can be found [here](https://docs.reach.sh/tut/rps/#tut-1)
 
-In the project directory, you can run:
+# Login with Unstoppable
+Integration with login with unstoppable can be found here `src/unstoppable/unstoppable_auth.js`. To get your clientID follow this guide. Submission detail [here]()
 
-### `npm start`
+# Domain Resolution and Crypto Payment with Unstoppable
+Integration with domain resolution and crypto payment with unstoppable can be found here. `src/unstoppable/domain_resolution.js` and `src/unstoppable/crypto_payment.js` . Submission detail [here]()
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+# Unstoppable Domain Resources to Integrate Login and Domain Resoultion
+ ## Crypto resolution
+- https://docs.unstoppabledomains.com/developer-toolkit/resolution-integration-methods/resolution-libraries/libraries-overview/
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- https://github.com/unstoppabledomains/resolution
 
-### `npm test`
+- https://unstoppabledomains.github.io/resolution/v8.1.0/classes/resolution.html
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Integrate crypto payment
+- https://docs.unstoppabledomains.com/crypto-payments/library-integration/
 
-### `npm run build`
+- [Setting up Alchemy to get API key to query unstoppable resolution API](https://www.loom.com/share/7cd5398275e74d8ba024323985cd90c7?t=169)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- https://docs.unstoppabledomains.com/developer-toolkit/resolution-integration-methods/resolution-service/overview/
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## login with Unstoppable
+- Login with unstoppable https://docs.unstoppabledomains.com/login-with-unstoppable/
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+# LICENSE
+Distributed under the MIT License. See for more information LICENSE
 
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+# Disclaimer
+This project is not audited and should not be used in a production environment.

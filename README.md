@@ -17,7 +17,7 @@ This is lottery application built with Reach. Deployed on Algorand and Etherum.
 - More detailed Reach specific setup instruction can be found [here](https://docs.reach.sh/tut/rps/#tut-1)
 
 # Login with Unstoppable
-Integration with login with unstoppable can be found here `src/unstoppable/unstoppable_auth.js`. To get your clientID follow this guide. Submission detail [here]()
+Integration with login with unstoppable can be found here `src/unstoppable/unstoppable_auth.js`. To get your clientID follow this [guide](https://docs.unstoppabledomains.com/login-with-unstoppable/login-integration-guides/login-client-configuration/#rules-for-redirect-uris). Submission detail [here]()
 
 # Domain Resolution and Crypto Payment with Unstoppable
 Integration with domain resolution and crypto payment with unstoppable can be found here. `src/unstoppable/domain_resolution.js` and `src/unstoppable/crypto_payment.js` . Submission detail [here]()

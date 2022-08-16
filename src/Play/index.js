@@ -8,8 +8,6 @@ export default function PlayModal(props) {
   const [contractInfo, setContractInfo] = useState("")
   const [selectedNum, setSelectedNum] = useState(0)
 
-
-
   const OUTCOME = ["Your number is not a match", "Your number matches"]
 
   const Shared = {
@@ -23,8 +21,6 @@ export default function PlayModal(props) {
       console.log(`The outcome is ${OUTCOME[num]}`)
     }
   }
-
-
 
   const attachAndPlay = async (contractInfo) =>{
 

@@ -8,6 +8,7 @@ export default function BuyTicket(){
   const [domain, setDomain] = useState("")
   const [amount, setAmount] = useState("")
   const [domainAddress, setDomainAdress] = useState("")
+  const [transId, setTransId] = useState("")
 
   const getDomain = async () => {
     const res = await resolveDomainUsingAPI("gloryagat.nft")
@@ -19,8 +20,12 @@ export default function BuyTicket(){
   
   
   useEffect(() => {
+    const txId = localStorage.getItem("txId2")
+    if(txId !== ""){
+      setTransId(txId)
+    } 
     getDomain()
-  }, [])
+  }, [transId])
 
   return(
     <div>
@@ -41,8 +46,8 @@ export default function BuyTicket(){
             <Form.Control type="number" placeholder="Enter ticket amount" value={amount} onChange={(e) => setAmount(e.currentTarget.value)} />
           </Form.Group>
         </Form>
-        <Button variant="primary" type="submit" onClick={() => payWithMetamask(domainAddress, amount)}> Submit</Button>
-          {txId !=="" ? <p>TransactionId: <a href={`https://rinkeby.etherscan.io/tx/${txId}`}>{txId}</a></p> : null }
+        <Button variant="primary" type="submit" onClick={() => payWithMetamask(domainAddress, amount)}> Buy Ticket</Button>
+          {txId !=="" ? <p><a href={`https://rinkeby.etherscan.io/tx/${transId}`}>{transId}</a></p> : null }
           
     </div>
   )

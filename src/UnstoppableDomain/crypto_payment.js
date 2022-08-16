@@ -24,9 +24,12 @@ export async function payWithMetamask(reciever, amount) {
 
       const transactionHash = await provider.send('eth_sendTransaction', params)
       console.log('transactionHash is ' + transactionHash);
-      localStorage.setItem("txId", transactionHash)
+      localStorage.setItem("txId", `Transaction Id: ${transactionHash}`)
+      localStorage.setItem("txId2", `Transaction Id: ${transactionHash}`)
+      alert(`View Transaction on etherscan: https://rinkeby.etherscan.io/tx/${transactionHash}`)
       } catch(err){
       console.log(err)
+      alert(err)
     }
  }else{
   console.log("Please install metamask")

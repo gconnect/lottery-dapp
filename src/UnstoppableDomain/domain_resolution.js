@@ -8,15 +8,6 @@ const resolution = new Resolution();
 
 // Resolve a Crypto Address From a Domain using the library
 export async function domainResolutionWithLibrary(){
-  // resolution
-  // .addr('gloryagat.nft', 'ETH')
-  // .then((receiverETHAddress) => {
-  //   // receiverETHAddress consists receiver ethereum address
-  //   // use this address as recipient of the payment
-  //   console.log(receiverETHAddress)
-  // })
-  // .catch(console.error);
-
   try{
     const response =  await resolution.addr('gloryagat.nft', 'ETH')
     console.log(response)
@@ -27,15 +18,17 @@ export async function domainResolutionWithLibrary(){
 
 export async function resolveDomainUsingAPI(domain){
   const url = 'https://unstoppabledomains.g.alchemy.com/domains/'
-  const response =  await  axios.get(`${url}${domain}`, {
-    headers: {
-      Authorization: "Bearer m3aWDA1Tkmnz4lbSiVv4Kit9NCcBGvPf"
-    }
-  })
-  console.log(response.data.meta.domain)
-  localStorage.setItem("domain_name", response.data.meta.domain )
-  localStorage.setItem("domain_address", response.data.meta.owner)
-  return response
+  try{
+    const response =  await  axios.get(`${url}${domain}`, {
+      headers: {
+        Authorization: process.env.REACT_APP_ALCHEMY_API_KEY
+      }
+    })
+    console.log(response.data.meta.domain)
+    return response
+  }catch(err){
+    console.log(err)
+  }
 }
 
 

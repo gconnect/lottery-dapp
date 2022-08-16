@@ -7,6 +7,9 @@ export default function MakePayment(){
   const [domain, setDomain] = useState("")
   const [amount, setAmount] = useState("")
   const [domainAddress, setDomainAdress] = useState("")
+  const [error, setError] = useState("")
+  const [transId, setTransId] = useState("")
+  const isError = !! error
 
   const domainHandler = async (e) =>{ 
     setDomain(e.target.value)
@@ -14,17 +17,22 @@ export default function MakePayment(){
   const getDomain = async () => {
     const res = await resolveDomainUsingAPI(domain)
     console.log(res)
+    if(res.data.meta.domain === null){
+      console.log("Owner found")
+      setError(`No crypto ETH address found for ${domain} `)
+    }
     setDomainAdress(res.data.meta.owner)
   }
   
-  const txId = localStorage.getItem("txId")
-  
-  
   useEffect(() => {
+    const txId = localStorage.getItem("txId2")
+    if(txId !== ""){
+      setTransId(txId)
+    } 
     if (domain) {
       getDomain() 
     }
-  }, [domain])
+  }, [domain, transId])
 
   return(
     <div>
@@ -45,8 +53,8 @@ export default function MakePayment(){
             <Form.Control type="number" placeholder="Enter ticket amount" value={amount} onChange={(e) => setAmount(e.currentTarget.value)} />
           </Form.Group>
         </Form>
-        <Button variant="primary" type="submit" onClick={() => payWithMetamask(domainAddress, amount)}> Submit</Button>
-          {txId !=="" ? <p>TransactionId: <a href={`https://rinkeby.etherscan.io/tx/${txId}`}>{txId}</a></p> : null }
+        <Button variant="primary" type="submit" onClick={() => payWithMetamask(domainAddress, amount)}> Transfer</Button>
+          {transId !=="" ? <p> <a href={`https://rinkeby.etherscan.io/tx/${transId}`}>{transId}</a></p> : null }
           
     </div>
   )

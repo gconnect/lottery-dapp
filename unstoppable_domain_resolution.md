@@ -5,7 +5,7 @@ Lottery DAPP
 [Link to Unstoppable Integration](https://github.com/gconnect/lottery-dapp/blob/master/src/UnstoppableDomain/domain_resolution.js)
 
 # Recorded video demo of the integration (max. 3 mins)
-[youtube demo]()
+[youtube demo](https://youtu.be/pS8_QTPq9_0)
 
 # Person of contact in case there are any questions
 agatevureglory@gmail.com

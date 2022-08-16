@@ -5,7 +5,7 @@ Lottery DAPP
 [Link to Unstoppable Integration]()
 
 # Recorded video demo of the integration (max. 3 mins)
-youtube demo
+[youtube demo](https://youtu.be/iWhX8BJMjb8)
 
 # Person of contact in case there are any questions
 agatevureglory@gmail.com

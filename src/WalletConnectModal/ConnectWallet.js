@@ -54,6 +54,7 @@ export default function ConnectWalletModal(props){
           <div className={css(style.btnContainer)}>
             <Button className={css(style.myAlgo)} onClick={connectWallet}> <img src={myAlgo} alt="myAlgo" width="28px"/>Connect with myAlgo Wallet</Button>
             <img className={css(style.unstoppable)} src={unstoppableButton} onClick={unstoppablelogin} alt="Unstoppable button" />
+            {/* <Button className={css(style.myAlgo)} onClick={connectWallet}> <img src={myAlgo} alt="myAlgo" width="28px"/>Connect with Fireblocks</Button> */}
           </div>
         </Modal.Body>
       </Modal>

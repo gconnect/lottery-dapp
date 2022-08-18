@@ -117,11 +117,11 @@ export default function Home(){
 
   }, [])
 
-  const logoutAccount = async() =>{
-    await logout()
-    localStorage.clear("domain")
-    setWalletAddress(null)
-  }
+  // const logoutAccount = async() =>{
+  //   await logout()
+  //   localStorage.clear("domain")
+  //   setWalletAddress(null)
+  // }
 
 
   return(
@@ -131,7 +131,7 @@ export default function Home(){
         <div>
           {isConnected ? 
            <DropdownButton style={{background: 'red !important'}} id="dropdown-basic-button" title={ unstoppable ? domain : `${walletAddress.substring(0,10)}...`}>
-           <Dropdown.Item onClick={unstoppable ? logoutAccount : disconnectWallet}>Disconnect</Dropdown.Item>
+           <Dropdown.Item onClick={unstoppable ? logout : disconnectWallet}>Disconnect</Dropdown.Item>
           </DropdownButton> :
           <Button  className={css(style.btn)} onClick={() => setShowConnectModal(true)}>Connect Wallet </Button>
           }  

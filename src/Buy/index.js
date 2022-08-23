@@ -1,7 +1,10 @@
 import { useEffect } from 'react';
 import {  Modal, Tabs, Tab } from 'react-bootstrap';
+import HyphenWidgetComponent from '../Biconomy/HypenWidget';
 import BuyTicket from './BuyTicket';
 import MakePayment from './MakePayment';
+import * as HyphenWidget from "@biconomy/hyphen-widget";
+import "@biconomy/hyphen-widget/dist/index.css";
 
 export default function BuyTicketModal(props) {
 
@@ -33,6 +36,9 @@ useEffect(() => {
         </Tab>
         <Tab eventKey="profile" title="Transfer">
           <MakePayment/>
+        </Tab>
+        <Tab eventKey="cross-chain" title="Cross Chain Transfer">
+          <HyphenWidgetComponent/>
         </Tab>
       </Tabs>      
       </Modal.Body>

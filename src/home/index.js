@@ -61,7 +61,9 @@ const style = StyleSheet.create({
   },
   buttonStyle: {
     marginRight: "24px",
-    marginLeft: "24px"
+    marginLeft: "24px",
+    background: "green",
+    border: "green",
   },
   winnerImage: {
     '@media (max-width: 575px)': {
@@ -145,6 +147,7 @@ export default function Home(){
           <div className={css(style.buttonContainer)}>
             <Button className={css(style.btn2)} variant="primary"  onClick={openBuyModal}>Buy Ticket</Button>
             <Button className={`${css(style.buttonStyle)}`} variant="success" onClick={() => setModalShow(true)}>Deployer</Button>
+            {/* <Button className={`${css(style.buttonStyle)}`} variant="success" onClick={() => setModalShow(true)}>Pay with Biconomy</Button> */}
             <Button className={css(style.btn)} onClick={() => setShow(true)}>Play Now</Button>
           </div>
         </div>

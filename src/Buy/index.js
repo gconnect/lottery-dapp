@@ -5,6 +5,7 @@ import BuyTicket from './BuyTicket';
 import MakePayment from './MakePayment';
 import * as HyphenWidget from "@biconomy/hyphen-widget";
 import "@biconomy/hyphen-widget/dist/index.css";
+import GaslessTransaction from '../Biconomy/GaslessTransaction';
 
 export default function BuyTicketModal(props) {
 
@@ -39,6 +40,9 @@ useEffect(() => {
         </Tab>
         <Tab eventKey="cross-chain" title="Cross Chain Transfer">
           <HyphenWidgetComponent/>
+        </Tab>
+        <Tab eventKey="gasless" title="Gasless Transaction">
+          <GaslessTransaction/>
         </Tab>
       </Tabs>      
       </Modal.Body>

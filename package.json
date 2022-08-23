@@ -4,6 +4,8 @@
   "private": true,
   "dependencies": {
     "@biconomy/hyphen-widget": "^0.0.9",
+    "@biconomy/mexa": "^2.0.35",
+    "@material-ui/core": "^4.12.4",
     "@reach-sh/stdlib": "^0.1.11-rc.6",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.3.0",
@@ -13,16 +15,21 @@
     "aphrodite": "^2.4.0",
     "axios": "^0.27.2",
     "bootstrap": "^5.2.0",
+    "browserify-zlib": "^0.2.0",
     "ethers": "^5.6.9",
-    "fireblocks-sdk": "^2.3.2",
+    "fs": "^0.0.1-security",
     "http": "^0.0.1-security",
+    "net": "^1.0.2",
     "path": "^0.12.7",
     "react": "^18.2.0",
     "react-bootstrap": "^2.5.0",
     "react-dom": "^18.2.0",
+    "react-notifications": "^1.7.4",
     "react-scripts": "5.0.1",
+    "tls": "^0.0.1",
     "web-vitals": "^2.1.4",
-    "web3": "^1.7.5"
+    "web3": "^1.7.5",
+    "zlib": "^1.0.5"
   },
   "scripts": {
     "start": "react-app-rewired start",

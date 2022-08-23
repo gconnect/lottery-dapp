@@ -23,7 +23,7 @@ useEffect(() => {
     >
       <Modal.Header closeButton>
         <Modal.Title id="contained-modal-title-vcenter">
-          Crypto payment with Unstoppable Domain Resolution
+          Crypto Transactions
         </Modal.Title>
       </Modal.Header>
       <Modal.Body>

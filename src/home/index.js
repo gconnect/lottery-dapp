@@ -6,8 +6,6 @@ import winner from "../images/winners.svg"
 import PlayModal from "../Play"
 import DeployerModal from "../Deployer"
 import { logout } from "../UnstoppableDomain/unstoppable_auth"
-import { domainResolutionWithLibrary, resolveDomainUsingAPI } from "../UnstoppableDomain/domain_resolution"
-import { transfer, sendEther, payWithMetamask } from "../UnstoppableDomain/crypto_payment"
 import { loadStdlib, ALGO_MyAlgoConnect as MyAlgoConnect } from '@reach-sh/stdlib'
 import ConnectWalletModal from "../WalletConnectModal/ConnectWallet"
 import BuyTicketModal from "../Buy"
@@ -107,13 +105,13 @@ export default function Home(){
   }
   useEffect(() =>{
     const value = localStorage.getItem("address")
-    const domain = localStorage.getItem("domain")
+    const domainName = localStorage.getItem("domain")
 
       if(value !== ""){
         setWalletAddress(value)
       }
-      if (domain){
-        setDomain(domain)
+      if (domainName){
+        setDomain(domainName)
         setUnstoppable(true)
       }
 

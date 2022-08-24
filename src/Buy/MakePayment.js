@@ -3,6 +3,15 @@ import { Form, Button} from 'react-bootstrap';
 import { resolveDomainUsingAPI } from "../UnstoppableDomain/domain_resolution"
 import { payWithMetamask } from "../UnstoppableDomain/crypto_payment"
 
+import { StyleSheet, css } from "aphrodite"
+
+
+const styles = StyleSheet.create({
+  submit: {
+   background: "blue"
+  },
+})
+
 export default function MakePayment(){
   const [domain, setDomain] = useState("")
   const [amount, setAmount] = useState("")
@@ -53,7 +62,7 @@ export default function MakePayment(){
             <Form.Control type="number" placeholder="Enter ticket amount" value={amount} onChange={(e) => setAmount(e.currentTarget.value)} />
           </Form.Group>
         </Form>
-        <Button variant="primary" type="submit" onClick={() => payWithMetamask(domainAddress, amount)}> Transfer</Button>
+        <Button className={css(styles.submit)} variant="primary" type="submit" onClick={() => payWithMetamask(domainAddress, amount)}> Transfer</Button>
           {transId !=="" ? <p> <a href={`https://rinkeby.etherscan.io/tx/${transId}`}>{transId}</a></p> : null }
           
     </div>

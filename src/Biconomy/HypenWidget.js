@@ -20,12 +20,12 @@ function HyphenWidgetComponent() {
     //   Polygon: "Polygon API Key",
     //   Avalanche: "Avalanche API Key",
     // },
-    // rpcUrls: {
-    //   // optional
-    //   Ethereum: "Ethereum RPC URL",
-    //   Polygon: "Polygon RPC URL",
-    //   Avalanche: "Avalanche RPC URL",
-    // },
+    rpcUrls: {
+      // optional
+      // Ethereum: `https://eth-goerli.g.alchemy.com/v2/${process.env.REACT_APP_ALCHEMY_GOERLI_API_KEY}`,
+      // Polygon: "Polygon RPC URL",
+      // Avalanche: "Avalanche RPC URL",
+    },
     // // NOTE: following 2 callback emit when tx is *sent*, you should check the status by yourself
     // onDeposit: (e) => console.log("Deposit " + e), // emit when depost tx is sent
     // onExit: (e) => console.log("Exit " + e), // emit when exit tx (receiver will receive tokens) is sent

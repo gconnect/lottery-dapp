@@ -38,7 +38,20 @@ Integration with domain resolution and crypto payment with unstoppable can be fo
 - https://docs.unstoppabledomains.com/developer-toolkit/resolution-integration-methods/resolution-service/overview/
 
 ## login with Unstoppable
-- Login with unstoppable https://docs.unstoppabledomains.com/login-with-unstoppable/
+- Login with unstoppablehttps://docs.unstoppabledomains.com/login-with-unstoppable/
+
+## Biconomy Hyphen Widget For Cross-chain Transfer
+- Integration with Biconomy Hyphen Widget For Cross-chain Transfer can be found here `src/Biconomy/HyphenWidget.js/` Submission detail [here](https://github.com/gconnect/lottery-dapp/blob/master/Biconomy_HyphenWidget.md)
+
+## Biconomy Gasless Transaction
+- Integration with Biconomy Gasless Transaction can be found here `src/Biconomy/GaslessTransaction.js/` Submission detail [here](https://github.com/gconnect/lottery-dapp/blob/master/Biconomy_Gasless_Transaction.md)
+
+## Biconomy Resources to Integrate HypenWidget For Cross-chain Transfer
+- https://docs.biconomy.io/products/hyphen-instant-cross-chain-transfers
+-  https://github.com/bcnmy/hyphen-widget
+
+## Biconomy Resources to Integrate Gasless Transaction
+- https://docs.biconomy.io/products/enable-gasless-transactions
 
 # LICENSE
 Distributed under the MIT License. See for more information [LICENSE](https://github.com/gconnect/lottery-dapp/blob/master/LICENSE)

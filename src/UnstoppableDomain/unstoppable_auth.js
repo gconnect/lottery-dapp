@@ -8,9 +8,6 @@ const uauth = new UAuth({
  export async function login() {
   try {
     const authorization = await uauth.loginWithPopup() 
-    console.log(authorization)
-    console.log(authorization.idToken.sub)
-    console.log(authorization.idToken.wallet_address)
     localStorage.setItem("domain", authorization.idToken.sub)
     window.location.reload()
   } catch (error) {

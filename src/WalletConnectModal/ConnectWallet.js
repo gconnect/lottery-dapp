@@ -19,6 +19,7 @@ stdlib.setWalletFallback(stdlib.walletFallback({providerEnv: 'TestNet', MyAlgoCo
       cursor: "pointer"
     },
     myAlgo:{
+      background: "blue",
       padding: "16px",
       fontSize: "18px",
       fontWeight: "bold"

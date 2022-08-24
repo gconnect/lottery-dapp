@@ -13,6 +13,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import Link from '@material-ui/core/Link';
 import Typography from '@material-ui/core/Typography';
 import { Box } from "@material-ui/core";
+let sigUtil = require("eth-sig-util");
 
 export default function GaslessTransaction(){
 
@@ -22,7 +23,7 @@ export default function GaslessTransaction(){
         abi: [{"inputs":[{"internalType":"string","name":"newQuote","type":"string"}],"name":"setQuote","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"_forwarder","type":"address"}],"name":"setTrustedForwarder","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"forwarder","type":"address"}],"stateMutability":"nonpayable","type":"constructor"},{"inputs":[],"name":"getQuote","outputs":[{"internalType":"string","name":"currentQuote","type":"string"},{"internalType":"address","name":"currentOwner","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"forwarder","type":"address"}],"name":"isTrustedForwarder","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"owner","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"quote","outputs":[{"internalType":"string","name":"","type":"string"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"trustedForwarder","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"versionRecipient","outputs":[{"internalType":"string","name":"","type":"string"}],"stateMutability":"view","type":"function"}]
     },
     apiKey: {
-        test: "27GCoVdd9.c7712f30-dc86-44fb-a454-561f61767313",
+        test: process.env.REACT_APP_BICONOMY_API_KEY,
         // prod: "sCd7Ht3sK.e21885c4-5f31-469a-8e15-969e47ec7842"
     }
 }
@@ -58,7 +59,7 @@ useEffect(() => {
             await provider.enable();
             setLoadingMessage("Initializing Biconomy ...");
             // We're creating biconomy provider linked to your network of choice where your contract is deployed
-            let jsonRpcProvider = new ethers.providers.JsonRpcProvider("https://kovan.infura.io/v3/d126f392798444609246423b06116c77");
+            let jsonRpcProvider = new ethers.providers.JsonRpcProvider(`https://eth-goerli.g.alchemy.com/v2/${process.env.REACT_APP_ALCHEMY_GOERLI_API_KEY}`);
             biconomy = new Biconomy(jsonRpcProvider, {
                 walletProvider: window.ethereum,
                 apiKey: config.apiKey.test,

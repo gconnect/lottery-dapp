@@ -62,7 +62,7 @@ export default function MakePayment(){
             <Form.Control type="number" placeholder="Enter ticket amount" value={amount} onChange={(e) => setAmount(e.currentTarget.value)} />
           </Form.Group>
         </Form>
-        <Button className={css(styles.submit)} variant="primary" type="submit" onClick={() => payWithMetamask(domainAddress, amount)}> Transfer</Button>
+        <Button className={css(styles.submit)} variant="primary" type="submit" onClick={() => payWithMetamask(domainAddress, amount)}> Buy Ticket</Button>
           {transId !=="" ? <p> <a href={`https://rinkeby.etherscan.io/tx/${transId}`}>{transId}</a></p> : null }
           
     </div>

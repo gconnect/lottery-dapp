@@ -28,22 +28,22 @@ useEffect(() => {
       </Modal.Header>
       <Modal.Body>
         <Tabs
-        defaultActiveKey="home"
+        defaultActiveKey="buy"
         id="uncontrolled-tab-example"
         className="mb-3"
       >
-        <Tab eventKey="home" title="Buy Ticket">
+        {/* <Tab eventKey="home" title="Buy Ticket">
           <BuyTicket/>
-        </Tab>
-        <Tab eventKey="profile" title="Transfer">
+        </Tab> */}
+        <Tab eventKey="buy" title="Buy Ticket">
           <MakePayment/>
         </Tab>
-        <Tab eventKey="cross-chain" title="Cross Chain Transfer">
+        {/* <Tab eventKey="cross-chain" title="Cross Chain Transfer">
           <HyphenWidgetComponent/>
-        </Tab>
+        </Tab> */}
         <Tab eventKey="gasless" title="Gasless Transaction">
           <GaslessTransaction/>
-        </Tab>
+        </Tab> 
       </Tabs>      
       </Modal.Body>
       {/* <Modal.Footer>

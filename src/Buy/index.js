@@ -38,9 +38,9 @@ useEffect(() => {
         <Tab eventKey="buy" title="Buy Ticket">
           <MakePayment/>
         </Tab>
-        {/* <Tab eventKey="cross-chain" title="Cross Chain Transfer">
+        <Tab eventKey="cross-chain" title="Cross Chain Transfer">
           <HyphenWidgetComponent/>
-        </Tab> */}
+        </Tab>
         <Tab eventKey="gasless" title="Gasless Transaction">
           <GaslessTransaction/>
         </Tab> 
